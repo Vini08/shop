@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/" ><img src="https://res.cloudinary.com/candidbusiness/image/upload/v1455406304/dispute-bills-chicago.png" alt="Dispute Bills"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <nav class="nav navbar-nav navbar-right">
+                <a class="btn btn-secondary" href="/shopping-cart/">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carro de Compras
+                    <span class="badge badge-pill badge-light">{{session.cart.totalQty}}</span>
+                </a>
+
+            </nav>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>   Sesion   </button>
+                <div class="dropdown-menu">
+                    {{# if login}}
+                        <a class="nav-link"  href="/user/profile">Cuenta de usuario</a>
+                        <li role="separator" class="divider"></li>
+                        <a class="nav-link" href="/user/logout">Cerrar Sesión</a>
+                    {{else}}
+                        <a class="nav-link"  href="/user/signin">Iniciar Sesión</a>
+                        <li role="separator" class="divider"></li>
+                        <a class="nav-link" href="/user/signup">Crear Cuenta</a>
+                    {{/if}}
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</nav>

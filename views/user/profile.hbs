@@ -1,0 +1,32 @@
+<div class="row"  >
+    <div class="col-md-8 col-md-offset-2">
+
+        <hr>
+        <h1><span class="badge badge-primary">Mis Ordenes</span></h1>
+        {{# each orders}}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        {{#each this.items}}
+                            <li class="list-group-item list-group-item-dark">
+                                <span class="badge badge-dark"> {{this.item.title}}</span>  - <span class="badge badge-secondary">Unidades {{this.qty}}</span>
+                                - <span class="badge badge-warning">  Costo x Unidad: Q{{this.item.price}}</span>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-primary">
+                    <strong> Total Compra <span class="badge badge-danger"> Q{{this.cart.totalPrice}}</span>
+                        Fecha de Compra {{#each this}}<span class="badge badge-info">{{this.date}}</span>{{/each}}
+                    </strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="min-width:85%; background-color:transparent !important; height:1px;"/>
+            {{/each}}
+
+    </div>
+</div>

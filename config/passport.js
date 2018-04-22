@@ -31,7 +31,7 @@ passport.use('local.signup', new LocalStr({
             return done(err);
         }
         if(user){
-            return done(null,false,{message: 'Email esta siendo usado'});
+            return done(null,false,{message: 'Este usuario ya ha sido creado'});
         }
         var newUser = User();
         newUser.email = email;

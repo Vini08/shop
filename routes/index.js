@@ -18,7 +18,7 @@ Product.find(function (err,docs) {
     for (var i=0;i<docs.length;i += groupSize){
         productGroup.push(docs.slice(i,i+groupSize));
     }
-    res.render('shop/index', { title: 'Express Vinicio', products:  productGroup, successMsg: successMsg, noMessages: !successMsg});
+    res.render('shop/index', { title: 'Tienda Online', products:  productGroup, successMsg: successMsg, noMessages: !successMsg});
     });
 });
 

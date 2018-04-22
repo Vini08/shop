@@ -70,6 +70,24 @@ router.post('/signin', passport.authenticate('local.signin',{
     }
 });
 
+router.get('/new', function (req,res,next){
+    var message = req.flash('error');
+    res.render('user/new', {csrfToken: req.csrfToken(), message: message, hasErrors: message.length > 0});
+});
+
+router.post('/new', passport.authenticate('local.new',{
+    failureRedirect: '/user/new',
+    failureFlash: true
+}), function (req, res , next) {
+    if(req.session.oldUrl){
+        var oldUrl = req.session.oldUrl;
+        req.session.oldUrl = null;
+        res.redirect(oldUrl);
+    }
+    else{
+        res.redirect('/user/profile');
+    }
+});
 
 module.exports = router;
 

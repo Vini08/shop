@@ -104,6 +104,25 @@ router.post('/checkout',isloggIN, function (req, res, next) {
     });
 
 });
+
+
+router.post('/new',function (req, res, next) {
+    var prod = new Product({
+        imagePath: req.body.imagen,
+        title: req.body.title,
+        description: req.body.description,
+        price: req.body.price
+    });
+    prod.save(function(error, doc){
+        if(error){
+            res.send('Error al intentar guardar el personaje.');
+        }else{
+            res.redirect('/');
+        }
+    });
+});
+
+
 module.exports = router;
 
 function isloggIN(req,res,next){

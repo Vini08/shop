@@ -75,3 +75,30 @@ passport.use('local.signin', new LocalStr({
 }));
 
 
+passport.use('local.new', new LocalStr({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, function (req, email, password, done) {
+    var errors = req.validationErrors();
+    if (errors){
+        var message = [];
+        errors.forEach(function (error) {
+            message.push(error.msg);
+        });
+        return done(null, false, req.flash('error', message));
+    }
+    User.findOne({'email': email}, function (err, user) {
+        if(err) {
+            return done(err);
+        }
+        if(!user){
+            return done(null,false,{message: 'Usuario no encontrado'});
+        }
+        if(!user.validPassword(password)){
+            return done(null,false,{message: 'Password incorrecta'});
+        }
+        return done(null, user);
+    });
+
+}));

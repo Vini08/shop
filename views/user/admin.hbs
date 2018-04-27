@@ -1,23 +1,24 @@
-<div class="row"  >
-    <div class="col-md-8 col-md-offset-2">
-
-        <hr>
-        <h1><span class="badge badge-primary">Mi denes</span></h1>
-        {{# each orders}}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <ul class="list-group">
-                        {{#each this.items}}
-                            <li class="list-group-item list-group-item-dark">
-                                <span class="badge badge-dark"> {{this.item.title}}</span>  - <span class="badge badge-secondary">Unidades {{this.qty}}</span>
-                                - <span class="badge badge-warning">  Costo x las Unidad: Q{{this.item.price}}</span>
-                            </li>
-                        {{/each}}
-                    </ul>
-                </div>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h1>Iniciar Sesión</h1>
+        {{#if hasErrors}}
+            <div class="alert alert-danger">
+                {{#each message}}
+                    <p>{{this}}</p>
+                {{/each}}
             </div>
-            <hr style="min-width:85%; background-color:transparent !important; height:1px;"/>
-        {{/each}}
-
+        {{/if}}
+        <form action="/user/admin" method="post">
+            <div class="form-group">
+                <label for="email" >E-mail</label>
+                <input type="text" id="email" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="password" >Password</label>
+                <input type="password" id="password" name="password" class="form-control">
+            </div>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <button type="submit" class="btn btn-primary">Iniciar Sesión como Administrador</button>
+        </form>
     </div>
 </div>

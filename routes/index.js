@@ -115,9 +115,9 @@ router.post('/new',function (req, res, next) {
     });
     prod.save(function(error, doc){
         if(error){
-            res.send('Error al intentar guardar el personaje.');
+            res.send('Error al intentar guardar el producto.');
         }else{
-            res.redirect('/');
+            res.redirect('/user/admin');
         }
     });
 });

@@ -60,19 +60,44 @@ router.post('/signin', passport.authenticate('local.signin',{
     failureRedirect: '/user/signin',
     failureFlash: true
 }), function (req, res , next) {
-    if(req.session.oldUrl) {
+    if (req.session.oldUrl) {
         var oldUrl = req.session.oldUrl;
         req.session.oldUrl = null;
         res.redirect(oldUrl);
     }
-    else{
-        res.redirect('/user/admin');
+    else {
+        res.redirect('/user/profile');
     }
 });
 
-router.get('/new', function (req,res,next){
+
+router.get('/admin', function (req,res,next){
     var message = req.flash('error');
-    res.render('user/new', {csrfToken: req.csrfToken(), message: message, hasErrors: message.length > 0});
+    res.render('user/admin', {csrfToken: req.csrfToken(), message: message, hasErrors: message.length > 0});
+});
+
+router.post('/admin', passport.authenticate('local.signin',{
+    failureRedirect: '/user/admin',
+    successReturnToOrRedirect: '/user/prueba'
+}));
+
+router.get('/prueba', isloggIN, function (req,res,next){
+    Order.find({user: req.user},function (err, orders) {
+        if(err){
+            return res.write('Error!');
+        }
+        var cart;
+        orders.forEach(function (order) {
+            cart = new Cart(order.cart);
+            order.items = cart.generateArray();
+        });
+        res.render('user/profile', {orders: orders});
+    });
+});
+
+router.get('/new', function (req,res,next){
+
+    res.redirect('user/new');
 });
 
 router.post('/new', passport.authenticate('local.new',{

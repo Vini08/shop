@@ -14,7 +14,7 @@
         {{# each this}}
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="thumbnail" >
-                    <h2><img src="{{this.imagePath}}" alt="..." class="img-responsive"></h2>
+                    <h2><img id="{{this._id}}" src="{{this.imagePath}}" alt="..." class="img-responsive"></h2>
                     <div class="caption">
                         <h2><span class="badge badge-secondary">{{this.title}}</span></h2>
                         <h2><span class="badge badge-info">{{this.description}}</span></h2>

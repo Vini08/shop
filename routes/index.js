@@ -12,7 +12,7 @@ var curr_year = d.getFullYear();
 /* GET home page. */
 router.get('/', function(req, res, next) {
     var successMsg = req.flash('success')[0];
-Product.find(function (err,docs) {
+    Product.find(function (err,docs) {
     var productGroup = [];
     var groupSize = 3;
     for (var i=0;i<docs.length;i += groupSize){

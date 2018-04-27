@@ -71,7 +71,6 @@ passport.use('local.signin', new LocalStr({
         }
         return done(null, user);
     });
-
 }));
 
 

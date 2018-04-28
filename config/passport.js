@@ -36,6 +36,7 @@ passport.use('local.signup', new LocalStr({
         var newUser = User();
         newUser.email = email;
         newUser.password = newUser.encryptPassword(password);
+        newUser.level = 0;
         newUser.save(function (err,result) {
            if(err){
                return done(err);

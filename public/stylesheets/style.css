@@ -126,3 +126,18 @@ body, html, head {
         width: 100%;
     }
 }
+
+.img {
+    height: auto;
+    max-width: 30%;
+    width: 50%;
+
+}
+
+.cell {
+    display: table-cell;
+}
+
+.cell-fluid {
+    width: 50%;
+}

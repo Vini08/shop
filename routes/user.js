@@ -5,6 +5,8 @@ var passport = require('passport');
 var srfProteccion = srf({cookie: true});
 var Order =require('../models/order');
 var Cart = require('../models/cart');
+var Product = require('../models/product');
+
 router.use(srfProteccion);
 
 router.get('/profile', isloggIN, function (req,res,next){
@@ -22,8 +24,15 @@ router.get('/profile', isloggIN, function (req,res,next){
 });
 
 router.get('/opciones-admin', isloggIN, function (req,res,next){
-    res.render('user/opciones-admin');
-
+    var successMsg = 1;
+    Product.find(function (err,docs) {
+        var productGroup = [];
+        var groupSize = 3;
+        for (var i=0;i<docs.length;i += groupSize){
+            productGroup.push(docs.slice(i,i+groupSize));
+        }
+        res.render('user/opciones-admin', { title: 'Administrador', products:  productGroup});
+    });
 });
 
 router.get('/new', isloggIN, function (req,res,next){
@@ -64,6 +73,7 @@ router.post('/signup', passport.authenticate('local.signup',{
 
 router.get('/signin', function (req,res,next){
     var message = req.flash('error');
+    var successMsg = 1;
     res.render('user/signin', {csrfToken: req.csrfToken(), message: message, hasErrors: message.length > 0});
 });
 
@@ -72,7 +82,7 @@ router.post('/signin', passport.authenticate('local.signin',{
     failureFlash: true
 }), function (req, res , next) {
     if (req.user.level===1) {
-        res.redirect('/user/opciones-admin');
+        res.redirect( '/user/opciones-admin');
     }
     else {
         res.redirect('/user/profile');

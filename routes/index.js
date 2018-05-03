@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Product = require('../models/product');
 var Cart = require('../models/cart');
+var User = require('../models/user');
 var Order =require('../models/order');
 
 var d = new Date();
@@ -19,7 +20,7 @@ router.get('/', function(req, res, next) {
         productGroup.push(docs.slice(i,i+groupSize));
     }
     res.render('shop/index', { title: 'Tienda Online', products:  productGroup, successMsg: successMsg, noMessages: !successMsg});
-    });
+     });
 });
 
 router.get('/add-to-cart/:id', function (req, res, next) {
@@ -60,6 +61,7 @@ router.get('/shopping-cart', function (req,res,next) {
     var cart = new Cart(req.session.cart);
     res.render('shop/shopping-cart',{products: cart.generateArray(), totalPrice: cart.totalPrice});
 });
+
 
 router.get('/checkout', isloggIN, function (req, res, next) {
     if(!req.session.cart){

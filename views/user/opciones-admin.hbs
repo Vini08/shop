@@ -1,7 +1,7 @@
-<hr class="col-md-6">
-<h2>Opciones de Administrador</h2>
-<hr class="col-md-6">
-<h2><a href="/user/new" class="btn btn-success pull-right" role="button">Crear Nuevo Producto</a></h2>
+<head>
+    {{> header-admin}}
+</head>
+
 <table class="table table-striped table-dark">
     <thead>
     <tr>
@@ -27,9 +27,9 @@
                     <div class="btn-group">
                         <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Opciones <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                            <a class="nav-link" href="">Eliminar</a>
+                            <a class="nav-link" href="/delete/{{this._id}}">Eliminar Artículo</a>
                             <li role="separator" class="divider"></li>
-                            <a class="nav-link" href="">Editar</a>
+                            <a class="nav-link" href="">Editar Artículo</a>
                         </ul>
                     </div>
                 </td>

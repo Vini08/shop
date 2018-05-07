@@ -31,13 +31,12 @@ router.get('/opciones-admin', isloggIN, function (req,res,next){
         for (var i=0;i<docs.length;i += groupSize){
             productGroup.push(docs.slice(i,i+groupSize));
         }
-        res.render('user/opciones-admin', { title: 'Administrador', products:  productGroup});
+        res.render('user/opciones-admin', { title: 'Administrador', products:  productGroup, levelAdmin: successMsg});
     });
 });
 
 router.get('/new', isloggIN, function (req,res,next){
     res.render('user/new');
-
 });
 
 
@@ -73,7 +72,6 @@ router.post('/signup', passport.authenticate('local.signup',{
 
 router.get('/signin', function (req,res,next){
     var message = req.flash('error');
-    var successMsg = 1;
     res.render('user/signin', {csrfToken: req.csrfToken(), message: message, hasErrors: message.length > 0});
 });
 

@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var Product = require('../models/product');
 var Cart = require('../models/cart');
-var User = require('../models/user');
 var Order =require('../models/order');
 
 var d = new Date();
@@ -52,6 +51,16 @@ router.get('/remove/:id', function (req, res, next) {
     cart.removeAll(productId);
     req.session.cart = cart;
     res.redirect('/shopping-cart');
+});
+
+router.get('/delete/:id', function (req, res, next) {
+    Product.remove({_id: req.params.id}, function(error){
+        if(error){
+            res.send('Error al intentar eliminar el producto.');
+        }else{
+            res.redirect('/user/opciones-admin');
+        }
+    });
 });
 
 router.get('/shopping-cart', function (req,res,next) {

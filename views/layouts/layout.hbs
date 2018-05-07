@@ -8,7 +8,9 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-{{> header}}
+<header>
+    {{> header}}
+</header>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <div class="container">
     {{{body}}}
@@ -26,8 +28,6 @@
 <script>
     // Get the modal
     var modal = document.getElementById('myModal');
-
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
 {{# each products }}
 {{# each this}}
     var img = document.getElementById('{{this._id}}');
@@ -38,23 +38,19 @@
         modalImg.src = this.src;
         captionText.innerHTML = this.alt;
     };
-
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     };
 {{/each}}
 {{/each}}
 </script>
+
 <script >
-    let x=1;
-    if (1 === {{session.user.level}} || x===1) {
-        x = 1;
-        $('#content').append('<a class="nav-link" href="/user/opciones-admin">Administrador</a>')
+    if ((1 === {{levelAdmin}})) {
+            $("header, footer").hide();
     }
 </script>
+
 </body>
 </html>

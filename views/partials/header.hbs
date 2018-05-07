@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
     <a href="/" class="navbar-left"><img src="/images/logo.png"></a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,18 +16,16 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i> Carro de Compras
                     <span class="badge badge-pill badge-light">{{session.cart.totalQty}}</span>
                 </a>
-
             </nav>
             <div class="btn-group">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user"></i>   Sesion   </button>
                 <div class="dropdown-menu">
-                    {{# if login}}
+                    {{#if login}}
                         <a class="nav-link"  href="/user/profile">Mi Cuenta</a>
                         <li role="separator" class="divider"></li>
                         <a class="nav-link" href="/user/logout">Cerrar Sesión</a>
                         <li role="separator" class="divider"></li>
-                        <div id="content"></div>
                     {{else}}
                         <a class="nav-link"  href="/user/signin">Iniciar Sesión</a>
                         <li role="separator" class="divider"></li>

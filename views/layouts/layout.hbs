@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="shortcut icon" href="/images/favicon.ico">
     <title>{{title}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -51,6 +52,37 @@
             $("header, footer").hide();
     }
 </script>
+<script >
+    bootstrap_alert = function() {}
+    bootstrap_alert.warning = function(message) {
+        $('#alert_placeholder').html('<div class="alert"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+    }
+    $('#clickme').on('click', function() {
+        bootstrap_alert.warning('<div class="alert alert-warning alert-dismissible fade show" role="alert">\n' +
+                '  <strong>Muy Bien!!!</strong>El Producto se ha actualizado correctamente.\n' +
+                '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                '    <span aria-hidden="true">&times;</span>\n' +
+                '  </button>\n' +
+                '</div>');
+    });
+</script>
+<script>
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
 
+        // files is a FileList of File objects. List some properties.
+        var output = [];
+        for (var i = 0, f; f = files[i]; i++) {
+            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                    f.size, ' bytes, last modified: ',
+                    f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                    '</li>');
+        }
+        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+
+    }
+
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
 </body>
 </html>

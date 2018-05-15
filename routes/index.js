@@ -63,6 +63,16 @@ router.get('/delete/:id', function (req, res, next) {
     });
 });
 
+router.get('/editar/:id', function (req, res, next) {
+    Product.findById(req.params.id, function(error, doc){
+        if(error){
+            res.send('Error al intentar ver el producto');
+        }else{
+            res.render('user/editar', {put: true, action: '/update/' + req.params.id, product: doc    });
+        }
+    });
+});
+
 router.get('/shopping-cart', function (req,res,next) {
     if(!req.session.cart){
         return res.render('shop/shopping-cart', {products: null});
@@ -128,11 +138,32 @@ router.post('/new',function (req, res, next) {
         if(error){
             res.send('Error al intentar guardar el producto.');
         }else{
-            res.redirect('/user/admin');
+            res.redirect('/user/opciones-admin');
         }
     });
 });
 
+router.post('/update/:id',function (req, res, next) {
+    Product.findById(req.params.id, function(error, doc){
+        if(error){
+            res.send('Error al intentar modificar el personaje.');
+        }else{
+            var prod = doc;
+                prod.imagePath = req.body.imagen;
+                prod.title = req.body.title;
+                prod.description = req.body.description;
+                prod.price = req.body.price;
+
+            prod.save(function(error, doc){
+                if(error){
+                    res.send('Error al intentar guardar el producto.'+error);
+                }else{
+                    res.redirect('/user/opciones-admin');
+                }
+            });
+        }
+    });
+});
 
 module.exports = router;
 

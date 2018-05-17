@@ -20,11 +20,8 @@
                 <label for="imagen" >Imagen de producto</label>
                 {{# product}}
                     <input type="text" id="imagen" value="{{this.imagePath}}"  class="form-control" required name="imagen">
-                    <input type="file" id="files" name="files[]" multiple />
-                    <output id="list" value="{{this.imagePath}}" ></output>
                 {{/ product}}
                 </div>
-
             <div class="form-group">
                 <label for="price" >Precio de producto</label>
                 {{# product}}

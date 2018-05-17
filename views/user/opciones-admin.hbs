@@ -37,5 +37,12 @@
         {{/each}}
     {{/each}}
     </tr>
+    <form action="/api/photo" method="post" >
+        <div class="form-group">
+        <input type="file" name="photo" id="photo" enctype="multipart/form-data" required name="photo">
+        <button type="submit" class="btn btn-primary">Guardar Producto</button>
+        </div>
+    </form>
+
     </tbody>
 </table>

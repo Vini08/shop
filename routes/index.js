@@ -3,11 +3,24 @@ var router = express.Router();
 var Product = require('../models/product');
 var Cart = require('../models/cart');
 var Order =require('../models/order');
-
+var Item =require('../models/item');
+var mongo = require('mongodb');
+var fs =require('fs');
+var Grid = require("gridfs-stream");
+Grid.mongo = mongo;
 var d = new Date();
 var curr_date = d.getDate();
 var curr_month = d.getMonth() + 1;
 var curr_year = d.getFullYear();
+var mongoose = require('mongoose');
+var db = mongoose.connection;
+// mongodb error
+db.on('error', console.error.bind(console, 'connection error:'));
+// mongodb connection open
+db.once('open', () => {
+    console.log(`Connected to Mongo at: ${new Date()}`);
+
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,6 +34,7 @@ router.get('/', function(req, res, next) {
     res.render('shop/index', { title: 'Tienda Online', products:  productGroup, successMsg: successMsg, noMessages: !successMsg});
      });
 });
+
 
 router.get('/add-to-cart/:id', function (req, res, next) {
    var productId = req.params.id;
@@ -126,7 +140,6 @@ router.post('/checkout',isloggIN, function (req, res, next) {
 
 });
 
-
 router.post('/new',function (req, res, next) {
     var prod = new Product({
         imagePath: req.body.imagen,
@@ -142,6 +155,20 @@ router.post('/new',function (req, res, next) {
         }
     });
 });
+
+router.post("/api/photo",function(req,res,next){
+    var newItem = new Item();
+    newItem.img.data = fs.readFileSync("/home/vinicio/Imágenes/"+req.body.photo);
+    newItem.img.contentType ="image/png";
+    newItem.save(function(error, doc){
+        if(error){
+            res.send('Error al intentar guardar el producto.');
+        }else{
+            res.redirect('/user/opciones-admin');
+        }
+    });
+});
+
 
 router.post('/update/:id',function (req, res, next) {
     Product.findById(req.params.id, function(error, doc){

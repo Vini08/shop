@@ -13,7 +13,6 @@ var flash = require('connect-flash');
 var expressValidator = require('express-validator');
 var userRouter = require('./routes/user');
 var mongoStore = require('connect-mongo')(session);
-
 // mongodb connection
 mongoose.Promise = Promise;
 mongoose.connect('mongodb://user:1234@ds247449.mlab.com:47449/shopping', {
@@ -28,8 +27,6 @@ db.once('open', () => {
     console.log(`Connected to Mongo at: ${new Date()}`);
     require('./config/passport',passport);
 });
-
-
 
 // view engine setup
 app.engine('.hbs',hadl({defaultLayout: 'layout', extname: '.hbs'}));
@@ -55,6 +52,7 @@ app.use(function (req,res,next) {
     res.locals.session = req.session;
     next();
 });
+
 app.use('/user', userRouter);
 app.use('/', indexRouter);
 
@@ -73,5 +71,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

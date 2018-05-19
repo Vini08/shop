@@ -6,7 +6,7 @@
         </div>
     </div>
 </div>
-
+    <h2><span class="badge badge-warning">{{cater}}</span></h2>
 {{# each products }}
     <div class="container-fluid">
     <div class="row">
@@ -16,10 +16,10 @@
                     <h2><img id="{{this._id}}" src="{{this.imagePath}}" alt="..." class="img-responsive"></h2>
                     <div class="caption">
                         <h2><span class="badge badge-secondary">{{this.title}}</span></h2>
-                        <h2><span class="badge badge-info">{{this.description}}</span></h2>
+                        <h2><span class="badge badge-secondary">{{this.description}}</span></h2>
                         <div class="clearfix">
                             <h2><div class="price pull-left">Q{{this.price}}</div></h2>
-                            <h2><a href="/add-to-cart/{{this._id}}" class="btn btn-success pull-right" role="button">Agregar a Compras</a></h2>
+                            <h2><a href="/add-to-cart/{{this._id}}" class="btn btn-info pull-right" role="button">Agregar a Compras</a></h2>
                         </div>
                     </div>
                 </div>

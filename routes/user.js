@@ -23,6 +23,7 @@ router.get('/profile', isloggIN, function (req,res,next){
     });
 });
 
+
 router.get('/opciones-admin', isloggIN, function (req,res,next){
     var successMsg = 1;
     Product.find(function (err,docs) {
@@ -86,10 +87,6 @@ router.post('/signin', passport.authenticate('local.signin',{
         res.redirect('/user/profile');
     }
 });
-
-
-module.exports = router;
-
 function isloggIN(req,ress,next){
     if(req.isAuthenticated()){
         return next();
@@ -102,3 +99,6 @@ function notloggIN(req,res,next){
     }
     res.redirect('/');
 }
+
+module.exports = router;
+

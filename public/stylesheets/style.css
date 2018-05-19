@@ -141,3 +141,10 @@ body, html, head {
 .cell-fluid {
     width: 50%;
 }
+
+.btn-primary-spacing
+{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+

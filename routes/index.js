@@ -18,8 +18,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 // mongodb connection open
 db.once('open', () => {
-    console.log(`Connected to Mongo at: ${new Date()}`);
-
 });
 
 /* GET home page. */
@@ -38,9 +36,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/add-to-cart/:id', function (req, res, next) {
    var productId = req.params.id;
-   var cart = new Cart(req.session.cart ? req.session.cart: {});
-
-   Product.findById(productId, function (err, product) {
+    var cart = new Cart(req.session.cart ? req.session.cart: {});
+    Product.findById(productId, function (err, product) {
       if(err){
           return res.redirect('/');
       }
@@ -83,6 +80,57 @@ router.get('/editar/:id', function (req, res, next) {
             res.send('Error al intentar ver el producto');
         }else{
             res.render('user/editar', {put: true, action: '/update/' + req.params.id, product: doc    });
+        }
+    });
+});
+
+router.get('/categoryMujer', function (req, res) {
+    var successMsg = req.flash('success')[0];
+    var cate = "Categoría Mujer";
+    return Product.find({category: "m"},function (err, docs) {
+        var productGroup = [];
+        var groupSize = 3;
+        for (var i=0;i<docs.length;i += groupSize){
+            productGroup.push(docs.slice(i,i+groupSize));
+        }
+        if (!err) {
+            return  res.render('shop/index', { title: 'Tienda Online', products:  productGroup, successMsg: successMsg, noMessages: !successMsg, cater: cate});
+        } else {
+            return console.log(err);
+        }
+    });
+});
+
+router.get('/categoryHombre', function (req, res) {
+    var successMsg = req.flash('success')[0];
+    var cate = "Categoría Hombre";
+    return Product.find({category: "h"},function (err, docs) {
+        var productGroup = [];
+        var groupSize = 3;
+        for (var i=0;i<docs.length;i += groupSize){
+            productGroup.push(docs.slice(i,i+groupSize));
+        }
+        if (!err) {
+            return  res.render('shop/index', { title: 'Tienda Online', products:  productGroup, successMsg: successMsg, noMessages: !successMsg, cater: cate});
+        } else {
+            return console.log(err);
+        }
+    });
+});
+
+router.get('/categoryChild', function (req, res) {
+    var successMsg = req.flash('success')[0];
+    var cate = "Categoría Niños";
+    return Product.find({category: "n"},function (err, docs) {
+        var productGroup = [];
+        var groupSize = 3;
+        for (var i=0;i<docs.length;i += groupSize){
+            productGroup.push(docs.slice(i,i+groupSize));
+        }
+        if (!err) {
+            return  res.render('shop/index', { title: 'Tienda Online', products:  productGroup, successMsg: successMsg, noMessages: !successMsg, cater: cate});
+        } else {
+            return console.log(err);
         }
     });
 });
@@ -145,6 +193,7 @@ router.post('/new',function (req, res, next) {
         imagePath: req.body.imagen,
         title: req.body.title,
         description: req.body.description,
+        category: req.body.categor,
         price: req.body.price
     });
     prod.save(function(error, doc){
@@ -191,6 +240,7 @@ router.post('/update/:id',function (req, res, next) {
         }
     });
 });
+
 
 module.exports = router;
 

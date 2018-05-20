@@ -1,15 +1,21 @@
 {{# if products}}
-    <div class="row"  >
+
+        <div class="row"></div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3 ">
-            <h1><span class="badge badge-info">Artículos en Carro de Compras</span></h1>
+            <h1><span class="badge badge-primary">Artículos en el Carro de Compras</span></h1>
             <ul class="list-group">
                 {{# each products}}
                     <li class="list-group-item">
                         <strong><span class="badge badge-dark">{{this.item.title}}</span></strong>
-                        <span class="badge badge-success">Q{{this.price}}</span>
+                        <strong><span class="badge badge-success">Precio Compra Q{{this.item.price}}</span></strong>
                         <span class="badge badge-secondary">Unidades {{this.qty}}</span>
+                        <span class="badge badge-danger">Total Q{{this.price}}</span>
+                        <div class="thumbnail" >
+
+                        <h2><img id="{{this._id}}" src="{{this.item.imagePath}}" alt="..." class="img-responsive"></h2>
+                        </div>
                         <div class="btn-group">
-                            <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Opciones <span class="caret"></span></button>
+                            <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Opciones de Artículo <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <a class="nav-link" href="/reduce/{{this.item._id}}">Reducir 1 Unidad</a>
                                 <li role="separator" class="divider"></li>
@@ -21,18 +27,13 @@
 
             </ul>
         </div>
-    </div>
-    <hr class="col-md-12">
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3 ">
-            <strong>Total compra Q{{ totalPrice}}</strong>
+        <hr class="col-md-12">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3 ">
+                <h3><strong class="badge badge-warning">Total Compra Q{{ totalPrice}}</strong><a href="/checkout" class="btn btn-primary btn-lg  pull-right" role="button">Realizar Compra</a></h3>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6 ">
-            <a href='/checkout' type="button" class="btn btn-info">Realizar Compra</a>
-        </div>
-    </div>
+
     {{else}}
     <div class="row">
         <div class="col-md-12">

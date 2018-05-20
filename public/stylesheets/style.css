@@ -1,6 +1,5 @@
 .thumbnail img{
-    max-height: 150px;
-
+    max-height: 140px;
 }
 
 .thumbnail .description{
@@ -11,28 +10,21 @@ color: cornflowerblue;
     font-weight: bold;
     font-size: 22px;
 }
-
-
-
+/*borde de las imagenes*/
 .thumbnail {
-    border-radius: 7px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 3px 35px rgba(0, 0, 0, 0.3);
 }
 
 h2 {
     text-align: center;
     font-size: 26px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 body, html, head {
     width:100%;
     height: 100%;
-}
-
-.bigger {
-    height: 100%;
-    background: url("http://4.bp.blogspot.com/-9Kj6e2SaTVk/Uy8ZXjADUqI/AAAAAAAAgDM/hrlFO2ZPsGs/s1600/Impresionantes+fondos+abstractos+%252847%2529.jpg") no-repeat center;
-    background-size: cover;
-
 }
 
 .navbar-brand>img {

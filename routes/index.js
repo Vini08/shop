@@ -194,6 +194,7 @@ router.post('/new',function (req, res, next) {
         title: req.body.title,
         description: req.body.description,
         category: req.body.categor,
+        sizex: req.body.talla,
         price: req.body.price
     });
     prod.save(function(error, doc){
@@ -229,6 +230,7 @@ router.post('/update/:id',function (req, res, next) {
                 prod.title = req.body.title;
                 prod.description = req.body.description;
                 prod.price = req.body.price;
+                prod.sizex = req.body.talla;
 
             prod.save(function(error, doc){
                 if(error){

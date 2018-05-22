@@ -14,9 +14,9 @@
                 <div class="panel-body">
                     <ul class="list-group">
                         {{#each this.items}}
-                            <li class="list-group-item list-group-item-dark">
+                            <li class="list-group-item list-group-item-secondary">
                                 <span class="badge badge-dark"> {{this.item.title}}</span>
-                                - <span class="badge badge-success">{{this.item.description}}</span>
+                                - <span class="badge badge-primary">{{this.item.description}}</span>
                                 - <span class="badge badge-secondary">Unidades {{this.qty}}</span>
                                 - <span class="badge badge-info">Talla {{this.item.sizex}}</span>
                                 - <span class="badge badge-warning">  Costo x Unidad: Q{{this.item.price}}</span>
@@ -26,9 +26,9 @@
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-primary">
+                        <li class="list-group-item list-group-item-dark">
                     <strong> Total Compra <span class="badge badge-danger"> Q{{this.cart.totalPrice}}</span>
-                        Fecha de Compra {{#each this}}<span class="badge badge-info">{{this.date}}</span>{{/each}}
+                        Fecha de Compra {{#each this}}<span class="badge badge-danger">{{this.date}}</span>{{/each}}
                     </strong>
                         </li>
                     </ul>

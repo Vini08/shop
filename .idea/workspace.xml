@@ -3,16 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e4bdab32-d5de-4979-b0f0-ae19e93d0eb1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/passport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/header-admin.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/header-admin.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/checkout.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/checkout.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/shop/index.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/index.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/shopping-cart.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/shopping-cart.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/user/profile.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/profile.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/user/signup.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/user/signup.hbs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -86,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.hbs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profile.hbs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/user/profile.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="61" />
+            <state relative-caret-position="230">
+              <caret line="21" column="56" lean-forward="true" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -104,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.hbs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/shop/index.hbs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+            <state relative-caret-position="70">
+              <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -154,8 +146,8 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/shop/checkout.hbs" />
         <option value="$PROJECT_DIR$/views/shop/shopping-cart.hbs" />
-        <option value="$PROJECT_DIR$/views/user/profile.hbs" />
         <option value="$PROJECT_DIR$/views/shop/index.hbs" />
+        <option value="$PROJECT_DIR$/views/user/profile.hbs" />
       </list>
     </option>
   </component>
@@ -176,7 +168,7 @@
     </packageJsonPaths>
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
     <option name="y" value="93" />
     <option name="width" value="1283" />
@@ -333,12 +325,12 @@
       <workItem from="1526761717702" duration="4185000" />
       <workItem from="1526790483081" duration="949000" />
       <workItem from="1526832076602" duration="5998000" />
-      <workItem from="1526931174703" duration="15234000" />
+      <workItem from="1526931174703" duration="16148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="385438000" />
+    <option name="totallyTimeSpent" value="386352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="729" extended-state="6" />
@@ -712,17 +704,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/user/profile.hbs">
+    <entry file="file://$PROJECT_DIR$/views/shop/index.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="61" />
+        <state relative-caret-position="70">
+          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/shop/index.hbs">
+    <entry file="file://$PROJECT_DIR$/views/user/profile.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+        <state relative-caret-position="230">
+          <caret line="21" column="56" lean-forward="true" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
         </state>
       </provider>
     </entry>

@@ -5,24 +5,32 @@ var passport = require('passport');
 var srfProteccion = srf({cookie: true});
 var Order =require('../models/order');
 var Cart = require('../models/cart');
+var User = require('../models/user');
 var Product = require('../models/product');
 
 router.use(srfProteccion);
 
 router.get('/profile', isloggIN, function (req,res,next){
-    Order.find({user: req.user},function (err, orders) {
-        if(err){
-            return res.write('Error!');
+    User.find(req.user,function (err,docs) {
+        var productGroup = [];
+        var groupSize = 3;
+        for (var i=0;i<docs.length;i += groupSize){
+            productGroup.push(docs.slice(i,i+groupSize));
         }
-        var cart;
-        orders.forEach(function (order) {
-        cart = new Cart(order.cart);
-        order.items = cart.generateArray();
+        Order.find({user: req.user},function (err, orders) {
+            if(err){
+                return res.write('Error!');
+            }
+            var cart;
+            orders.forEach(function (order) {
+                cart = new Cart(order.cart);
+                order.items = cart.generateArray();
+            });
+            res.render('user/profile', { title: 'Mi Cuenta', users:  docs, orders: orders});
         });
-        res.render('user/profile', {orders: orders});
+
     });
 });
-
 
 router.get('/opciones-admin', isloggIN, function (req,res,next){
     var successMsg = 1;
@@ -91,7 +99,7 @@ function isloggIN(req,ress,next){
     if(req.isAuthenticated()){
         return next();
     }
-    res.redirect('/');
+    ress.redirect('/');
 }
 function notloggIN(req,res,next){
     if(!req.isAuthenticated()){

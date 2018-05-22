@@ -1,7 +1,7 @@
 var passport = require('passport');
 var User = require('../models/user');
 var LocalStr = require('passport-local').Strategy;
-
+var LocalStrategy = require('passport-local').Strategy;
 passport.serializeUser(function (user, done) {
 done(null,user.id);
 });
@@ -12,12 +12,13 @@ passport.deserializeUser(function (id, done) {
    });
 });
 
-passport.use('local.signup', new LocalStr({
+passport.use('local.signup', new LocalStrategy({
+    nameField: 'name',
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
 
-}, function (req, email,password, done) {
+}, function (req,email,password,  done) {
     var errors = req.validationErrors();
     if (errors){
         var message = [];
@@ -34,6 +35,7 @@ passport.use('local.signup', new LocalStr({
             return done(null,false,{message: 'Este usuario ya ha sido creado'});
         }
         var newUser = User();
+        newUser.name = req.body.name;
         newUser.email = email;
         newUser.password = newUser.encryptPassword(password);
         newUser.level = 0;

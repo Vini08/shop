@@ -1,15 +1,24 @@
 <div class="row"  >
     <div class="col-md-8 col-md-offset-2">
-
+        <hr >
+        <h3><span class="badge badge-danger ">Mi Perfil</span></h3>
+        {{#each users}}
+            <h3><span class="badge badge-primary">Nombre:</span> <span class="badge badge-secondary">{{this.name}}</span></h3>
+            <h3><span class="badge badge-primary">E-mail:</span> <span class="badge badge-secondary">{{this.email}}</span></h3>
+        {{/each}}
         <hr>
-        <h1><span class="badge badge-primary">Mis Ordenes</span></h1>
+        <h1><span class="badge badge-primary btn-lg btn-block">Mis Ordenes</span></h1>
+
         {{# each orders}}
             <div class="panel panel-default">
                 <div class="panel-body">
                     <ul class="list-group">
                         {{#each this.items}}
                             <li class="list-group-item list-group-item-dark">
-                                <span class="badge badge-dark"> {{this.item.title}}</span>  - <span class="badge badge-secondary">Unidades {{this.qty}}</span>
+                                <span class="badge badge-dark"> {{this.item.title}}</span>
+                                - <span class="badge badge-success">{{this.item.description}}</span>
+                                - <span class="badge badge-secondary">Unidades {{this.qty}}</span>
+                                - <span class="badge badge-info">Talla {{this.item.sizex}}</span>
                                 - <span class="badge badge-warning">  Costo x Unidad: Q{{this.item.price}}</span>
                             </li>
                         {{/each}}

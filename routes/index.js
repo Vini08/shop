@@ -145,11 +145,11 @@ router.get('/shopping-cart', function (req,res,next) {
 
 
 router.get('/checkout', isloggIN, function (req, res, next) {
+    var errMsg = req.flash('error')[0];
     if(!req.session.cart){
         return res.render('/shopping-cart');
     }
     var cart = new Cart(req.session.cart);
-    var errMsg = req.flash('error')[0];
     res.render('shop/checkout', {total: cart.totalPrice, errMsg: errMsg, noError: !errMsg});
 });
 
@@ -219,7 +219,7 @@ router.post("/api/photo",function(req,res,next){
     });
 });
 
-
+/*actualziar el producto*/
 router.post('/update/:id',function (req, res, next) {
     Product.findById(req.params.id, function(error, doc){
         if(error){
